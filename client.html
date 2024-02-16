@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لعبة لوب غارو</title>
+</head>
+<body>
+  <div class="card" id="card">
+      <h2>مكان البطاقة</h2>
+  </div>
+  
+  <script>
+    const ws = new WebSocket('ws://localhost:8080');
+
+    // عند استلام البطاقة
+    ws.onmessage = function(event) {
+        const card = document.getElementById("card");
+        card.innerHTML = "<h2>" + event.data + "</h2>";
+    };
+  </script>
+</body>
+</html>
